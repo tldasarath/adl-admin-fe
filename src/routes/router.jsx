@@ -1,0 +1,109 @@
+import { Navigate, Route, Routes } from 'react-router-dom';
+import AuthLayout from '@/layouts/AuthLayout';
+import { useAuthContext } from '@/context/useAuthContext';
+import { appRoutes, authRoutes } from '@/routes/index'
+  ;
+import AdminLayout from '@/layouts/AdminLayout';
+import SignIn from '@/app/(other)/auth/sign-in/page';
+import { lazy } from 'react';
+import FAQManagement from '@/app/(admin)/faq/page';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import EnquiryManagement from '@/app/(admin)/enquiry/EnquiryManagement';
+import PrivateRoute from '@/components/private/PrivateRoute';
+const Analytics = lazy(() => import('@/app/(admin)/dashboard/analytics/page'));
+const UserManagement = lazy(() => import('@/app/(admin)/ecommerce/sellers/page'));
+const UserCreation = lazy(() => import('@/app/(admin)/forms/basic/page'));
+const Blogs = lazy(() => import('@/app/(admin)/apps/contacts/page'));
+const EcommerceProductDetails = lazy(() => import('@/app/(admin)/ecommerce/products/[productId]/page'));
+const EcommerceProductCreate = lazy(() => import('@/app/(admin)/ecommerce/products/create/page'));
+
+const AppRouter = props => {
+  const {
+    isAuthenticated
+  } = useAuthContext();
+  return (<>
+    <ToastContainer
+      position="top-right"
+      autoClose={5000}
+      hideProgressBar={false}
+      newestOnTop={false}
+      closeOnClick
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+      theme="light"
+      style={{
+        zIndex: 9999,
+        fontSize: '14px'
+      }}
+    />
+
+    <Routes>
+      <Route path="/login" element={<AuthLayout><SignIn /></AuthLayout>} />
+      <Route path="/" element={<AdminLayout><Analytics /></AdminLayout>} />
+
+      <Route
+        path="/user-management"
+        element={
+          <AdminLayout>
+
+            <UserManagement />
+          </AdminLayout>
+        }
+      />
+      <Route
+        path="/user-management/add"
+        element={
+          <AdminLayout>
+
+            <UserCreation />
+          </AdminLayout>
+        }
+      />
+      <Route
+        path="/faqs"
+        element={
+          <AdminLayout>
+
+            <FAQManagement />
+          </AdminLayout>
+        }
+      />
+      <Route
+        path="/enquiry"
+        element={
+          <AdminLayout>
+
+            <EnquiryManagement />
+          </AdminLayout>
+        }
+      />
+      <Route
+        path="/blogs"
+        element={
+          <AdminLayout>
+            <Blogs />
+          </AdminLayout>
+        }
+      />
+      <Route
+        path="/blogs/details/:blogId"
+        element={
+          <AdminLayout>
+            <EcommerceProductDetails /> 
+          </AdminLayout>
+        }
+      />
+      <Route
+        path="/blogs/add-blog"
+        element={
+          <AdminLayout>
+            <EcommerceProductCreate /> 
+          </AdminLayout>
+        }
+      />
+    </Routes></>)
+};
+export default AppRouter;
