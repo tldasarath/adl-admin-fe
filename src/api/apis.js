@@ -152,15 +152,15 @@ export const addBlog = async (blogData) => {
 
     }
 }
-export const getBlogs = async () => {
-    try {
-        const response = await axiosInstance.get(`/blog/get-blogs`)
-        return response.data
-    } catch (error) {
-        console.error(error);
+export const getBlogs = async (query = "") => {
+  try {
+    const response = await axiosInstance.get(`/blog/get-blogs${query}`);
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
+};
 
-    }
-}
 export const getBlog = async (id) => {
     try {
      const response = await axiosInstance.get(`/blog/get-blog/${id}`)
@@ -170,9 +170,21 @@ export const getBlog = async (id) => {
 
     }
 }
-export const updateBlog = async (id) => {
-    try {
-     const response = await axiosInstance.get(`/blog/get-blog/${id}`)
+export const updateBlog = async (id,blogData) => {
+    try {   
+     const response = await axiosInstance.put(`/blog/update-blog/${id}`,blogData,{
+        headers: {
+          "Content-Type": "multipart/form-data",
+        }})
+        return response.data
+    } catch (error) {
+        console.error(error);
+
+    }
+}
+export const deleteBlog = async (id) => {
+    try {   
+     const response = await axiosInstance.delete(`/blog/delete-blog/${id}`)
         return response.data
     } catch (error) {
         console.error(error);

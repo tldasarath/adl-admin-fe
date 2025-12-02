@@ -7,7 +7,6 @@ import AdminLayout from '@/layouts/AdminLayout';
 import SignIn from '@/app/(other)/auth/sign-in/page';
 import { lazy } from 'react';
 import FAQManagement from '@/app/(admin)/faq/page';
-import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import EnquiryManagement from '@/app/(admin)/enquiry/EnquiryManagement';
 import PrivateRoute from '@/components/private/PrivateRoute';
@@ -23,22 +22,7 @@ const AppRouter = props => {
     isAuthenticated
   } = useAuthContext();
   return (<>
-    <ToastContainer
-      position="top-right"
-      autoClose={5000}
-      hideProgressBar={false}
-      newestOnTop={false}
-      closeOnClick
-      rtl={false}
-      pauseOnFocusLoss
-      draggable
-      pauseOnHover
-      theme="light"
-      style={{
-        zIndex: 9999,
-        fontSize: '14px'
-      }}
-    />
+   
 
     <Routes>
       <Route path="/login" element={<AuthLayout><SignIn /></AuthLayout>} />
@@ -98,6 +82,14 @@ const AppRouter = props => {
       />
       <Route
         path="/blogs/add-blog"
+        element={
+          <AdminLayout>
+            <EcommerceProductCreate /> 
+          </AdminLayout>
+        }
+      />
+      <Route
+        path="/blogs/edit-blog/:blogId"
         element={
           <AdminLayout>
             <EcommerceProductCreate /> 

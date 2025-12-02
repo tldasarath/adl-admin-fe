@@ -10,9 +10,13 @@ const ProductDetailView = ({
   const {
     title,
     excerpt,
-    description
+    description,
+    category,
+    subCategory
+
   
   } = product;
+  
    const navigate =useNavigate() 
 const stripHtml = (html) => {
   const doc = new DOMParser().parseFromString(html, "text/html");
@@ -79,6 +83,8 @@ const stripHtml = (html) => {
       </div> */}
       <div className="mb-3 flex-column d-flex">
         {/* <h5>About this item:</h5> */}
+        <p className="text-muted mb-1 icons-center">{category}</p>
+        <p className="text-muted mb-1 icons-center">{subCategory}</p>
         <p className="text-muted mb-1 icons-center">
          {excerpt}
         </p>
