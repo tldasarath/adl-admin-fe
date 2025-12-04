@@ -154,7 +154,7 @@ const CreateBlogForms = () => {
       <Tabs
         activeKey={activeStep}
         className="nav nav-tabs card-tabs"
-        onSelect={() => {}}
+        onSelect={() => { }}
         style={{ pointerEvents: "none" }}
       >
         {formSteps.map(step => {
@@ -172,14 +172,14 @@ const CreateBlogForms = () => {
                 </span>
               }
             >
-            <Component
-  ref={step.index === 1 ? generalRef : step.index === 3 ? metaRef : null}
-  updateBlogData={updateBlogData}
-  blogData={blogData}
-  error={activeStep === 2 && (!blogData.image && !blogData.existingImage)
-    ? "Image is required"
-    : null}
-/>
+              <Component
+                ref={step.index === 1 ? generalRef : step.index === 3 ? metaRef : null}
+                updateBlogData={updateBlogData}
+                blogData={blogData}
+                error={activeStep === 2 && (!blogData.image && !blogData.existingImage)
+                  ? "Image is required"
+                  : null}
+              />
 
             </Tab>
           );

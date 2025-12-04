@@ -28,14 +28,14 @@ const BlogCard = ({ post, onDelete, onEdit, onView }) => {
             {/* Category Watermark */}
             <span
               className="badge bg-primary position-absolute"
-              style={{ top: 10, left: 10, padding: "6px 12px" }}
+              style={{ top: 10, right: 10, padding: "8px 12px" }}
             >
               {category}
             </span>
           </div>
 
           {/* Title */}
-          <h4 className="fs-18 mt-2 text-dark fw-semibold">{title}</h4>
+          <h4 className="fs-18 mt-2 text-white fw-semibold">{title}</h4>
 
           {/* Date */}
           <div className="text-muted small mb-2">
@@ -48,24 +48,40 @@ const BlogCard = ({ post, onDelete, onEdit, onView }) => {
           </div>
 
           {/* Excerpt */}
-          <p className="text-muted" style={{ minHeight: 60 }}>
+          <p className="text-white" style={{ minHeight: 60 }}>
             {excerpt}
           </p>
 
           {/* Action Buttons */}
           <div className="d-flex justify-content-center gap-2 mt-2">
-            <Button variant="soft-primary" size="md" onClick={() => onView(post)}>
-              <IconifyIcon icon="mdi:eye-outline" />
+            <Button
+              variant="soft-primary"
+              size="sm"
+              className="px-3 py-2"
+              onClick={() => onView(post)}
+            >
+              <IconifyIcon icon="mdi:eye-outline" className="fs-20" />
             </Button>
 
-            <Button variant="soft-primary" size="sm" onClick={() => onEdit(post)}>
-              <IconifyIcon icon="bx:edit" />
+            <Button
+              variant="soft-primary"
+              size="sm"
+              className="px-3 py-2"
+              onClick={() => onEdit(post)}
+            >
+              <IconifyIcon icon="bx:edit" className="fs-20" />
             </Button>
 
-            <Button variant="soft-danger" size="sm" onClick={() => onDelete(post)}>
-              <IconifyIcon icon="bx:trash" />
+            <Button
+              variant="soft-danger"
+              size="sm"
+              className="px-3 py-2"
+              onClick={() => onDelete(post)}
+            >
+              <IconifyIcon icon="bx:trash" className="fs-20" />
             </Button>
           </div>
+
         </div>
       </CardBody>
     </Card>
@@ -149,9 +165,8 @@ const Blogs = () => {
           {categories.map((cat) => (
             <span
               key={cat}
-              className={`badge rounded-pill px-3 py-2 cursor-pointer ${
-                cat === categoryFilter ? "bg-primary text-white" : "bg-light text-dark border"
-              }`}
+              className={`badge rounded-pill px-3 py-2 cursor-pointer ${cat === categoryFilter ? "bg-primary text-white" : "bg-light text-dark border"
+                }`}
               style={{ fontSize: "14px", cursor: "pointer" }}
               onClick={() => {
                 setCategoryFilter(cat);

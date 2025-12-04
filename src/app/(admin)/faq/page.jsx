@@ -59,7 +59,7 @@ const FAQManagement = () => {
   };
 
   const isHomeSectionLimitReached = () => {
-    return getHomeSectionFAQsCount() >= 5;
+    return getHomeSectionFAQsCount() >= 6;
   };
 
   const handleShowModal = (faq) => {
@@ -106,7 +106,7 @@ const FAQManagement = () => {
 
   const handleHomeSectionToggle = async (faq) => {
     if (!faq.home && isHomeSectionLimitReached()) {
-      toast.error('Home section limit reached (max 5 FAQs)');
+      toast.error('Home section limit reached (max 6 FAQs)');
       return;
     }
 
@@ -263,7 +263,7 @@ const handleDragEnd = async (result) => {
                   <h4 className="card-title mb-0">FAQ Management</h4>
                   <div className="mt-2">
                     <Badge bg={homeSectionLimitReached ? 'warning' : 'success'}>
-                      Home Section: {homeSectionCount}/5 FAQs
+                      Home Section: {homeSectionCount}/6 FAQs
                     </Badge>
                     {homeSectionLimitReached && (
                       <small className="text-warning ms-2">

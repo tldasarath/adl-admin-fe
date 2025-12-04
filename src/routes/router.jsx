@@ -10,12 +10,16 @@ import FAQManagement from '@/app/(admin)/faq/page';
 import 'react-toastify/dist/ReactToastify.css';
 import EnquiryManagement from '@/app/(admin)/enquiry/EnquiryManagement';
 import PrivateRoute from '@/components/private/PrivateRoute';
+import SeoLayout from '@/app/(admin)/seo/SeoLayout';
+const Cards = lazy(() => import('@/app/(admin)/ui/cards/page'));
+
 const Analytics = lazy(() => import('@/app/(admin)/dashboard/analytics/page'));
 const UserManagement = lazy(() => import('@/app/(admin)/ecommerce/sellers/page'));
 const UserCreation = lazy(() => import('@/app/(admin)/forms/basic/page'));
 const Blogs = lazy(() => import('@/app/(admin)/apps/contacts/page'));
 const EcommerceProductDetails = lazy(() => import('@/app/(admin)/ecommerce/products/[productId]/page'));
 const EcommerceProductCreate = lazy(() => import('@/app/(admin)/ecommerce/products/create/page'));
+const Invoices = lazy(() => import('@/app/(admin)/invoices/page'));
 
 const AppRouter = props => {
   const {
@@ -96,6 +100,31 @@ const AppRouter = props => {
           </AdminLayout>
         }
       />
-    </Routes></>)
+      <Route
+      path="/newsletter/subscribers"
+        element={
+          <AdminLayout>
+            <Invoices /> 
+          </AdminLayout>}
+      />
+      <Route
+      path="/seo"
+        element={
+          <AdminLayout>
+            <SeoLayout /> 
+          </AdminLayout>}
+      />
+      <Route
+      path="/gallery"
+        element={
+          <AdminLayout>
+            <Cards /> 
+          </AdminLayout>}
+      />
+    </Routes>
+    
+    </>)
+       
+  
 };
 export default AppRouter;
