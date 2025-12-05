@@ -11,6 +11,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import EnquiryManagement from '@/app/(admin)/enquiry/EnquiryManagement';
 import PrivateRoute from '@/components/private/PrivateRoute';
+const Pricing = lazy(() => import('@/app/(admin)/pages/pricing/page'));
 
 const Analytics = lazy(() => import('@/app/(admin)/dashboard/analytics/page'));
 const UserManagement = lazy(() => import('@/app/(admin)/ecommerce/sellers/page'));
@@ -111,6 +112,14 @@ const AppRouter = props => {
         element={
           <AdminLayout>
             <Invoices /> 
+          </AdminLayout>
+        }
+      />
+      <Route
+        path="/packages"
+        element={
+          <AdminLayout>
+            <Pricing /> 
           </AdminLayout>
         }
       />

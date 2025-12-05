@@ -96,6 +96,14 @@ export const MENU_ITEMS = [
     //   }
     // ]
   },
+  {
+      key: 'page-packages',
+      icon: 'mdi:Box',
+      label: 'Packages',
+      url: '/packages',
+    
+    },
+
 
   //  {
   //   key: 'ecommerce',
